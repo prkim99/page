@@ -1,0 +1,787 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>발리 짱구 서핑 트립</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gaegu:wght@700&family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+/* Layout: 스티커북 같은 여행 책자 — 하늘색 표지(해·파도·스티커) → 굵은 테두리와 각진 그림자 카드로 된 챕터들 */
+:root{
+  --bg:#F2F9FF; --surface:#FFFFFF; --ink:#16213A; --muted:#55607A; --edge:#16213A; --shadow:#16213A;
+  --pink:#FF4F9A; --aqua:#13B5D8; --sun:#FFD43B; --mint:#35D392; --orange:#FF8A3D;
+  --pink-soft:#FFE3EF; --aqua-soft:#D8F3FA; --sun-soft:#FFF4C4; --mint-soft:#D5F7E8;
+  --on-color:#16213A;
+  --f-display:"Black Han Sans", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --f-hand:"Gaegu", "Apple SD Gothic Neo", cursive;
+  --f-body:"IBM Plex Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
+  --f-mono:"IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0F1629; --surface:#1A2442; --ink:#F2F5FF; --muted:#A9B3CF; --edge:#F2F5FF; --shadow:#FF4F9A;
+    --pink-soft:#3B1E35; --aqua-soft:#123548; --sun-soft:#3A3318; --mint-soft:#143A2D;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0F1629; --surface:#1A2442; --ink:#F2F5FF; --muted:#A9B3CF; --edge:#F2F5FF; --shadow:#FF4F9A;
+  --pink-soft:#3B1E35; --aqua-soft:#123548; --sun-soft:#3A3318; --mint-soft:#143A2D;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15.5px;line-height:1.7;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration-color:var(--pink);text-decoration-thickness:2px;text-underline-offset:3px}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(--pink);outline-offset:2px}
+.wrap{max-width:1060px;margin:0 auto;padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px))}
+h1,h2,h3{font-family:var(--f-display);font-weight:400;text-wrap:balance;margin:0;line-height:1.2;letter-spacing:-.01em}
+p{margin:0}
+.num{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.card{background:var(--surface);border:2.5px solid var(--edge);border-radius:20px;box-shadow:5px 5px 0 var(--shadow)}
+
+/* Cover */
+.cover{background:var(--aqua);color:var(--on-color);position:relative;overflow:hidden;border-bottom:3px solid #16213A}
+.cover .wrap{padding-block:52px 92px;display:grid;gap:22px;position:relative;z-index:2}
+.sunball{position:absolute;right:-40px;top:-50px;width:260px;height:260px;border-radius:50%;background:var(--sun);border:3px solid #16213A;z-index:1}
+.hello{font-family:var(--f-hand);font-size:26px;line-height:1;transform:rotate(-3deg);display:inline-block;justify-self:start;background:#FFFFFF;border:2.5px solid #16213A;border-radius:999px;padding:6px 16px 8px;box-shadow:3px 3px 0 #16213A}
+.cover h1{font-size:clamp(46px,9vw,96px);line-height:.98;color:#FFFFFF;-webkit-text-stroke:2.5px #16213A;paint-order:stroke fill;text-shadow:5px 5px 0 #16213A;max-width:12ch}
+.cover h1 span{color:var(--sun)}
+.cover .sub{font-size:17px;font-weight:600;max-width:40ch}
+.stickers{display:flex;flex-wrap:wrap;gap:10px}
+.stk{font-weight:700;font-size:14.5px;padding:7px 14px;border-radius:14px;border:2.5px solid #16213A;box-shadow:3px 3px 0 #16213A;color:#16213A}
+.stk:nth-child(1){background:var(--pink);color:#FFFFFF;transform:rotate(-2deg)}
+.stk:nth-child(2){background:var(--sun);transform:rotate(1.5deg)}
+.stk:nth-child(3){background:var(--mint);transform:rotate(-1deg)}
+.stk:nth-child(4){background:#FFFFFF;transform:rotate(2deg)}
+.cover-note{font-size:13px;max-width:60ch;opacity:.85}
+.waves{position:absolute;left:0;right:0;bottom:-2px;height:70px;z-index:1;width:100%}
+
+/* Nav */
+.toc{position:sticky;top:env(safe-area-inset-top, 0px);z-index:5;background:var(--bg);border-bottom:2.5px solid var(--edge)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top, 0px);z-index:10;background:var(--bg)}
+.toc .wrap{display:flex;gap:8px;overflow-x:auto;padding-block:12px;scrollbar-width:none}
+.toc a{flex:none;text-decoration:none;font-weight:700;font-size:14px;padding:6px 14px;border-radius:999px;border:2px solid var(--edge);background:var(--surface);transition:transform .15s, background .15s}
+.toc a:hover{background:var(--sun);color:var(--on-color);transform:translateY(-2px)}
+
+/* Sections */
+section.chapter{padding-block:64px 8px}
+.ch-head{display:grid;gap:10px;margin-bottom:30px;max-width:66ch}
+.ch-head h2{font-size:clamp(32px,5vw,46px)}
+.ch-head p{color:var(--muted)}
+.ch-no{font-family:var(--f-hand);font-size:22px;line-height:1;justify-self:start;padding:4px 14px 6px;border-radius:999px;border:2px solid var(--edge);transform:rotate(-2deg);color:var(--on-color)}
+#plan .ch-no{background:var(--sun)} #stay .ch-no{background:var(--mint)} #guide .ch-no{background:var(--pink);color:#FFFFFF}
+#budget .ch-no{background:var(--aqua)} #season .ch-no{background:var(--orange)} #prep .ch-no{background:var(--sun)}
+
+/* Itinerary */
+.days{display:grid;gap:18px}
+.day{display:grid;grid-template-columns:96px 1fr;gap:22px;padding:22px 24px}
+.day-tag{display:grid;align-content:start;justify-items:center;gap:8px}
+.day-tag b{font-family:var(--f-display);font-weight:400;font-size:30px;width:76px;height:76px;border-radius:50%;display:grid;place-items:center;border:2.5px solid var(--edge);color:var(--on-color);background:var(--sun);transform:rotate(-6deg)}
+.day:nth-child(5n+2) .day-tag b{background:var(--pink);color:#FFFFFF}
+.day:nth-child(5n+3) .day-tag b{background:var(--mint)}
+.day:nth-child(5n+4) .day-tag b{background:var(--aqua)}
+.day:nth-child(5n+5) .day-tag b{background:var(--orange)}
+.day-tag span{font-weight:700;font-size:13px;color:var(--muted)}
+.day h3{font-size:23px;margin-bottom:12px}
+.slots{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.slots li{display:grid;grid-template-columns:64px 1fr;gap:12px;min-width:0}
+.slots .t{font-family:var(--f-mono);font-weight:600;font-size:13px;color:var(--muted);padding-top:2px}
+.slots a{font-weight:700}
+.callout{margin-top:18px;background:var(--sun-soft);border:2px dashed var(--edge);border-radius:16px;padding:14px 18px;font-size:14.5px}
+@media (max-width:620px){.day{grid-template-columns:1fr;gap:12px;padding:20px}.day-tag{grid-auto-flow:column;justify-content:start;align-items:center;gap:12px}.day-tag b{width:58px;height:58px;font-size:24px}}
+
+/* Stays */
+.stays{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.stay{padding:22px;display:grid;gap:10px;align-content:start;min-width:0;position:relative}
+.stay h3{font-size:23px}
+.stay .meta{font-size:13px;color:var(--muted);font-weight:500}
+.stay dl{display:grid;grid-template-columns:auto 1fr;gap:5px 14px;margin:0;font-size:14px}
+.stay dt{color:var(--muted)}
+.stay dd{margin:0}
+.badge{justify-self:start;font-weight:700;font-size:12.5px;padding:3px 12px;border-radius:999px;border:2px solid var(--edge);color:var(--on-color)}
+.stay:nth-child(1) .badge{background:var(--mint)}
+.stay:nth-child(2) .badge{background:var(--pink);color:#FFFFFF}
+.stay:nth-child(3) .badge{background:var(--aqua)}
+.stay.pick{background:var(--mint-soft)}
+.stay.pick::after{content:"추천!";position:absolute;top:-16px;right:16px;font-family:var(--f-hand);font-size:22px;background:var(--sun);color:var(--on-color);border:2.5px solid var(--edge);border-radius:999px;padding:0 14px 3px;transform:rotate(6deg)}
+.go{justify-self:start;font-weight:700;text-decoration:none;font-size:14px;padding:6px 14px;border-radius:12px;border:2px solid var(--edge);background:var(--surface);transition:transform .15s}
+.go:hover{transform:translate(-2px,-2px);box-shadow:3px 3px 0 var(--shadow)}
+
+/* Guide */
+.guide{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+.spot{padding:22px;display:grid;gap:12px;align-content:start;min-width:0;scroll-margin-top:80px;transition:transform .18s, box-shadow .18s}
+.spot:hover{transform:translate(-3px,-3px);box-shadow:8px 8px 0 var(--shadow)}
+.spot .kind{justify-self:start;font-weight:700;font-size:12.5px;padding:2px 11px;border-radius:999px;border:2px solid var(--edge);color:var(--on-color)}
+.g-canggu .kind{background:var(--aqua)} .g-ubud .kind{background:var(--mint)} .g-south .kind{background:var(--orange)} .g-opt .kind{background:var(--sun)} .g-east .kind{background:var(--pink);color:#FFFFFF} .g-east .facts span{background:var(--pink-soft)}
+.spot h3{font-size:25px}
+.spot h3 em{display:block;font-style:normal;font-family:var(--f-hand);font-size:19px;color:var(--pink);margin-top:2px}
+.facts{display:flex;flex-wrap:wrap;gap:6px}
+.facts span{font-size:12.5px;font-weight:600;padding:3px 10px;border-radius:8px}
+.g-canggu .facts span{background:var(--aqua-soft)} .g-ubud .facts span{background:var(--mint-soft)} .g-south .facts span{background:var(--pink-soft)} .g-opt .facts span{background:var(--sun-soft)}
+.spot ul{margin:0;padding-left:18px;font-size:14px;color:var(--muted);display:grid;gap:4px}
+.spot ul b{color:var(--ink);font-weight:700}
+.guide-group{font-size:27px;margin:40px 0 18px;display:flex;align-items:center;gap:14px}
+.guide-group::after{content:"";flex:1;height:0;border-top:2.5px dashed var(--edge);opacity:.5}
+
+/* Budget */
+.seg{display:inline-flex;border:2.5px solid var(--edge);border-radius:999px;padding:4px;background:var(--surface);margin-bottom:22px;gap:4px}
+.seg button{font:inherit;font-size:14.5px;font-weight:700;border:0;background:none;color:var(--muted);padding:7px 18px;border-radius:999px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--pink);color:#FFFFFF}
+.budget{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:22px;align-items:start}
+@media (max-width:760px){.budget{grid-template-columns:1fr}}
+.tbl-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:14.5px}
+th,td{padding:12px 18px;text-align:left;border-bottom:1.5px solid var(--aqua-soft);vertical-align:top}
+th{font-size:12.5px;color:var(--muted);font-weight:600}
+td.amt{text-align:right;font-family:var(--f-mono);font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap}
+td small{display:block;color:var(--muted);font-size:12.5px}
+tr:last-child td{border-bottom:0}
+.total{padding:24px;display:grid;gap:18px;background:var(--sun-soft)}
+.total .lbl{font-weight:700;font-size:13px;color:var(--muted)}
+.total .big{font-family:var(--f-display);font-size:52px;line-height:1}
+.total .big small{font-family:var(--f-body);font-size:16px;font-weight:600;color:var(--muted);margin-left:4px}
+.bar{height:16px;border-radius:999px;overflow:hidden;display:flex;border:2px solid var(--edge);background:var(--surface)}
+.bar i{display:block;height:100%}
+.legend{display:grid;gap:6px;font-size:13.5px}
+.legend div{display:flex;align-items:center;gap:8px}
+.legend s{width:12px;height:12px;border-radius:4px;flex:none;text-decoration:none;border:1.5px solid var(--edge)}
+.legend .v{margin-left:auto;font-family:var(--f-mono);font-variant-numeric:tabular-nums;color:var(--muted)}
+
+/* Season */
+.months{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:5px;margin-bottom:12px}
+.months div{text-align:center;font-size:13px;font-weight:600;padding:14px 0 8px;border-radius:10px;font-family:var(--f-mono);color:var(--on-color);border:2px solid var(--edge)}
+.months .wet{background:var(--aqua)}
+.months .dry{background:var(--sun)}
+.months .now{background:var(--pink);color:#FFFFFF;transform:translateY(-4px);box-shadow:0 4px 0 var(--shadow)}
+.months small{display:block;font-family:var(--f-body);font-size:10px;margin-top:2px}
+.key{display:flex;gap:16px;font-size:13px;color:var(--muted);flex-wrap:wrap}
+.key span{display:inline-flex;align-items:center;gap:6px}
+.key s{width:12px;height:12px;border-radius:4px;text-decoration:none;border:1.5px solid var(--edge)}
+
+/* Prep */
+.prep{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.box{padding:22px;min-width:0}
+.box h3{font-size:23px;margin-bottom:12px}
+.box ul{margin:0;padding-left:18px;font-size:14px;display:grid;gap:6px}
+.check{list-style:none;padding:0 !important}
+.check label{display:flex;gap:10px;align-items:flex-start;cursor:pointer}
+.check input{margin-top:4px;width:17px;height:17px;flex:none;accent-color:var(--pink)}
+.check input:checked + span{color:var(--muted);text-decoration:line-through}
+
+footer{padding-block:56px 64px;color:var(--muted);font-size:13px}
+footer .bye{font-family:var(--f-hand);font-size:28px;color:var(--pink);display:block;margin-bottom:6px}
+@media (prefers-reduced-motion:no-preference){
+  html{scroll-behavior:smooth}
+  .sunball{animation:bob 6s ease-in-out infinite}
+  @keyframes bob{50%{transform:translateY(10px)}}
+}
+@media (prefers-reduced-motion:reduce){.spot,.toc a,.go{transition:none}}
+@media (max-width:620px){.sunball{width:170px;height:170px;right:-50px;top:-40px}}
+
+/* Spot illustrations + links */
+.art{margin:-22px -22px 0;height:130px;border-bottom:2.5px solid var(--edge);border-radius:17px 17px 0 0;overflow:hidden;background:var(--aqua-soft)}
+.art svg{display:block;width:100%;height:100%}
+.s-sky{fill:var(--aqua-soft)} .s-soft-sun{fill:var(--sun-soft)} .s-soft-mint{fill:var(--mint-soft)} .s-soft-pink{fill:var(--pink-soft)}
+.s-sun{fill:var(--sun)} .s-pink{fill:var(--pink)} .s-aqua{fill:var(--aqua)} .s-mint{fill:var(--mint)} .s-orange{fill:var(--orange)}
+.s-ink{fill:var(--edge)} .s-white{fill:var(--surface)}
+.o{stroke:var(--edge);stroke-width:2.5;stroke-linejoin:round}
+.s-line{fill:none;stroke:var(--edge);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.links{order:99;display:flex;flex-wrap:wrap;gap:8px;padding-top:4px}
+.links a{font-size:13px;font-weight:700;text-decoration:none;padding:5px 12px;border-radius:10px;border:2px solid var(--edge);background:var(--surface);transition:transform .15s}
+.links a:hover{transform:translate(-2px,-2px);box-shadow:3px 3px 0 var(--shadow)}
+.tag{display:inline-block;font-family:var(--f-body);font-size:11px;font-weight:700;padding:1px 8px;border-radius:999px;background:var(--mint);color:var(--on-color);margin-left:6px;vertical-align:3px;border:1.5px solid var(--edge)}
+
+/* At a glance */
+.glance{padding-block:40px 0}
+.glance h2{font-size:clamp(28px,4.4vw,38px);margin-bottom:16px}
+.glance-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.glance table{min-width:760px;font-size:14px}
+.glance th{background:var(--sun-soft);color:var(--ink);font-weight:700;font-size:13px;white-space:nowrap}
+.glance td{vertical-align:middle}
+.glance td:first-child{white-space:nowrap}
+.glance td:first-child b{font-family:var(--f-display);font-weight:400;font-size:20px;margin-right:6px}
+.glance td:first-child small{color:var(--muted);font-size:12.5px}
+.glance a{font-weight:600}
+.glance tr.travel td{color:var(--muted)}
+.pill{display:inline-block;font-weight:700;font-size:12.5px;padding:2px 10px;border-radius:999px;border:2px solid var(--edge);color:var(--on-color);white-space:nowrap}
+.p-move{background:var(--surface);color:var(--ink)} .p-kin{background:var(--orange)} .p-can{background:var(--aqua)} .p-ubud{background:var(--mint)} .p-ulu{background:var(--sun)} .p-amed{background:var(--pink);color:#FFFFFF}
+.glance-note{margin-top:12px;font-size:13px;color:var(--muted)}
+
+/* Flights */
+.sub-h{font-size:27px;margin:8px 0 18px}
+.sub-h.next{margin-top:40px}
+.flights{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.flight{padding:22px;display:grid;gap:12px;align-content:start;min-width:0}
+.flight h3{font-size:25px}
+.flight .meta{font-size:13px;color:var(--muted)}
+.leg{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:12px;font-family:var(--f-mono);font-weight:600;font-size:17px}
+.leg .line{height:0;border-top:2.5px dashed var(--edge)}
+.leg small{display:block;font-family:var(--f-body);font-weight:500;font-size:12px;color:var(--muted)}
+.leg span:last-child{text-align:right}
+.price{font-family:var(--f-display);font-size:34px;line-height:1}
+.price small{font-family:var(--f-body);font-size:13px;font-weight:600;color:var(--muted);margin-left:6px}
+.villas{list-style:none;padding:12px 0 0;margin:0;display:grid;gap:6px;font-size:13.5px;border-top:2px dashed var(--edge)}
+.villas a{font-weight:700}
+</style>
+
+<header class="cover">
+  <div class="sunball" aria-hidden="true"></div>
+  <div class="wrap">
+    <span class="hello">4명이서 발리 간다!</span>
+    <h1>짱구에서 <span>서핑</span> 트립</h1>
+    <p class="sub">짱구에 머물면서 파도 타고, 지프로 화산 오르고, 정글 래프팅하고, 마지막 날엔 바닷속 프리다이빙까지 하는 7일</p>
+    <div class="stickers">
+      <span class="stk">1/20(수) ~ 1/26(화)</span>
+      <span class="stk">7일 · 숙소 4박</span>
+      <span class="stk">4명 · 방 2개</span>
+      <span class="stk num">1인 162~211만원</span>
+    </div>
+    <p class="cover-note">항공권과 숙소는 2026년 10월 20일에 이 날짜로 실제 검색한 가격이고, 나머지는 예상치예요. 환율은 1만 루피아 ≈ 850~900원으로 잡았어요.</p>
+  </div>
+  <svg class="waves" viewBox="0 0 1200 70" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 30 Q 50 5 100 30 T 200 30 T 300 30 T 400 30 T 500 30 T 600 30 T 700 30 T 800 30 T 900 30 T 1000 30 T 1100 30 T 1200 30 V70 H0 Z" style="fill:var(--bg)" stroke="#16213A" stroke-width="3"/>
+  </svg>
+</header>
+
+<nav class="toc" aria-label="목차">
+  <div class="wrap">
+    <a href="#glance">한눈에</a><a href="#plan">일정</a><a href="#stay">항공·숙소</a><a href="#guide">가이드</a><a href="#budget">예산</a><a href="#season">날씨</a><a href="#prep">준비물</a>
+  </div>
+</nav>
+
+<main class="wrap">
+
+<!-- 0. At a glance -->
+<section class="glance" id="glance">
+  <h2>한눈에 보는 일정</h2>
+  <div class="glance-wrap card">
+    <table>
+      <thead><tr><th>날짜</th><th>지역</th><th>오전</th><th>오후</th><th>저녁</th><th>잠자리</th></tr></thead>
+      <tbody>
+        <tr class="travel"><td><b>D1</b><small>1/20 수</small></td><td><span class="pill p-move">이동</span></td><td>–</td><td>15:10 인천 출발</td><td>21:50 발리 도착 → 공항에서 대기</td><td>공항 대기</td></tr>
+        <tr><td><b>D2</b><small>1/21 목</small></td><td><span class="pill p-kin">킨타마니</span></td><td><a href="#batur">지프 투어 일출</a>, 용암 지대, 온천</td><td>짱구 체크인, 낮잠</td><td><a href="#massage">마사지</a></td><td>짱구</td></tr>
+        <tr><td><b>D3</b><small>1/22 금</small></td><td><span class="pill p-can">짱구</span></td><td><a href="#surf">서핑 1회차</a></td><td><a href="#cafe">카페</a>, 수영장</td><td><a href="#beachclub">비치클럽 선셋</a></td><td>짱구</td></tr>
+        <tr><td><b>D4</b><small>1/23 토</small></td><td><span class="pill p-ubud">우붓</span></td><td><a href="#rafting">아융강 래프팅</a></td><td><a href="#tegallalang">계단식 논</a>, <a href="#monkey">몽키 포레스트</a></td><td>우붓 시내 저녁</td><td>짱구</td></tr>
+        <tr><td><b>D5</b><small>1/24 일</small></td><td><span class="pill p-ulu">울루와뚤</span></td><td><a href="#surf">서핑 2회차</a></td><td><a href="#uluwatu">울루와뚤 사원</a></td><td>케착댄스, <a href="#jimbaran">짐바란 해산물</a></td><td>짱구</td></tr>
+        <tr><td><b>D6</b><small>1/25 월</small></td><td><span class="pill p-amed">아메드</span></td><td><a href="#freedive">프리다이빙 체험</a></td><td><a href="#snorkel">난파선 스노클링</a></td><td>공항 이동 → 23:05 출발</td><td>기내</td></tr>
+        <tr class="travel"><td><b>D7</b><small>1/26 화</small></td><td><span class="pill p-move">귀국</span></td><td>07:10 인천 도착</td><td>–</td><td>–</td><td>–</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="glance-note">항목을 누르면 아래 가이드로 이동해요. 숙소는 1/21~1/25 짱구 4박, 항공은 제주항공 직항 기준이에요.</p>
+</section>
+
+<!-- 1. Itinerary -->
+<section class="chapter" id="plan">
+  <div class="ch-head">
+    <span class="ch-no">Part 1</span>
+    <h2>하루하루 일정</h2>
+    <p>짱구 숙소 한 곳에 계속 머무르면서 하루에 한 지역씩 다녀와요. 1월은 우기라서 활동은 되도록 오전에 하고, 오후 소나기가 오는 시간은 쉬는 시간으로 비워 뒀어요.</p>
+  </div>
+  <div class="days">
+    <article class="day card">
+      <div class="day-tag"><b>D1</b><span>1/20 수<br>출국</span></div>
+      <div><h3>밤에 도착해서 공항에서 잠깐 대기</h3>
+        <ul class="slots">
+          <li><span class="t">15:10</span><span>인천 출발 (제주항공 직항 7시간 40분, 기내에서 최대한 자 두기)</span></li>
+          <li><span class="t">21:50</span><span>덴파사르 공항 도착 → 입국심사, 짐 찾기, eSIM 켜기</span></li>
+          <li><span class="t">23:00</span><span>공항 카페나 라운지에서 쉬면서 대기</span></li>
+          <li><span class="t">02:30</span><span>지프 투어 차량이 공항으로 픽업 (짐은 차에 실어요)</span></li>
+        </ul></div>
+    </article>
+    <article class="day card">
+      <div class="day-tag"><b>D2</b><span>1/21 목<br>킨타마니</span></div>
+      <div><h3>지프 타고 바투르 일출 보고 짱구 체크인</h3>
+        <ul class="slots">
+          <li><span class="t">04:30</span><span>킨타마니 도착, 안내 듣고 4륜구동 <a href="#batur">지프</a>로 약 40분 올라가기</span></li>
+          <li><span class="t">05:50</span><span>지프에서 내려 조금 걸어가서 일출 보기</span></li>
+          <li><span class="t">06:30</span><span>지프 타고 검은 용암 지대 달리기</span></li>
+          <li><span class="t">08:00</span><span>바투르 호숫가 온천 1시간 → 아침 식사 → 커피농장</span></li>
+          <li><span class="t">12:30</span><span>짱구 도착 → 점심 → 13:00 숙소 체크인 후 낮잠</span></li>
+          <li><span class="t">18:00</span><span><a href="#massage">발리 마사지</a> → 숙소 근처에서 저녁</span></li>
+        </ul>
+        <p class="callout" style="margin-top:14px">걸어서 2시간 오르는 트레킹 대신 지프로 올라가서 훨씬 덜 힘들어요. 보통 투어는 호텔에서 픽업하니까 <b>공항 픽업이 되는지</b>, 캐리어 4개를 실을 수 있는지 예약할 때 꼭 확인하세요. 1/20 밤은 숙소에서 자지 않으니 숙소는 1/21부터 4박만 예약하면 돼요.</p>
+      </div>
+    </article>
+    <article class="day card">
+      <div class="day-tag"><b>D3</b><span>1/22 금<br>짱구</span></div>
+      <div><h3>첫 서핑, 그리고 선셋 비치클럽</h3>
+        <ul class="slots">
+          <li><span class="t">08:00</span><span><a href="#surf">서핑 강습 1회차</a> · 바투볼롱 해변 2시간</span></li>
+          <li><span class="t">11:00</span><span><a href="#cafe">짱구 카페</a>에서 브런치</span></li>
+          <li><span class="t">14:00</span><span>숙소 수영장에서 휴식 (소나기 오는 시간)</span></li>
+          <li><span class="t">17:00</span><span><a href="#beachclub">비치클럽</a>에서 선셋 보기 → 짱구 거리에서 저녁</span></li>
+        </ul></div>
+    </article>
+    <article class="day card">
+      <div class="day-tag"><b>D4</b><span>1/23 토<br>우붓</span></div>
+      <div><h3>래프팅, 계단식 논, 원숭이 숲</h3>
+        <ul class="slots">
+          <li><span class="t">08:00</span><span>하루 대절한 기사 차량으로 출발 (우붓까지 약 1시간~1시간 30분)</span></li>
+          <li><span class="t">09:30</span><span><a href="#rafting">아융강 래프팅</a> · 약 2시간, 점심 포함</span></li>
+          <li><span class="t">14:00</span><span><a href="#tegallalang">뜨갈랄랑 계단식 논</a> (정글 스윙은 원하는 사람만)</span></li>
+          <li><span class="t">16:00</span><span><a href="#monkey">몽키 포레스트</a></span></li>
+          <li><span class="t">17:30</span><span>우붓 시내에서 저녁 → 짱구로 돌아가기</span></li>
+        </ul></div>
+    </article>
+    <article class="day card">
+      <div class="day-tag"><b>D5</b><span>1/24 일<br>울루와뚜</span></div>
+      <div><h3>절벽 위 사원과 케착댄스</h3>
+        <ul class="slots">
+          <li><span class="t">07:30</span><span><a href="#surf">서핑 강습 2회차</a></span></li>
+          <li><span class="t">15:00</span><span>울루와뚜로 출발 (차가 막히면 1시간 30분 넘게 걸려요)</span></li>
+          <li><span class="t">17:00</span><span><a href="#uluwatu">울루와뚜 사원</a>에서 절벽 산책</span></li>
+          <li><span class="t">18:00</span><span>노을 지는 시간에 케착댄스 공연</span></li>
+          <li><span class="t">20:00</span><span><a href="#jimbaran">짐바란 해산물</a>로 저녁 → 숙소</span></li>
+        </ul></div>
+    </article>
+    <article class="day card">
+      <div class="day-tag"><b>D6</b><span>1/25 월<br>아메드</span></div>
+      <div><h3>마지막 날은 바닷속으로: 프리다이빙과 스노클링</h3>
+        <ul class="slots">
+          <li><span class="t">05:00</span><span>체크아웃하고 짐을 기사 차량에 실어서 출발 (발리 동쪽 끝 아메드까지 약 2시간 30분~3시간)</span></li>
+          <li><span class="t">08:30</span><span><a href="#freedive">프리다이빙 체험</a> · 이론과 호흡 연습 → 수영장 → 바다</span></li>
+          <li><span class="t">14:30</span><span><a href="#snorkel">난파선 스노클링</a> (프리다이빙을 안 하는 친구는 하루 종일 스노클링)</span></li>
+          <li><span class="t">16:30</span><span>샤워하고 공항으로 출발 (약 2시간 30분~3시간)</span></li>
+          <li><span class="t">19:30</span><span>공항 근처에서 저녁 → 탑승 수속</span></li>
+          <li><span class="t">23:05</span><span>덴파사르 출발 (제주항공 기준)</span></li>
+        </ul>
+        <p class="callout" style="margin-top:14px">짐은 하루 종일 기사 차량에 실어 두고 다녀요. 차량은 아메드 왕복이 아니라 <b>짱구 → 아메드 → 공항</b> 편도 하루 대절로 예약하세요. 체험 수준의 얕은 다이빙이라 보통 그날 밤 비행기를 타도 괜찮지만, 스쿨에 당일 밤 비행기라고 미리 말해 두세요.</p>
+      </div>
+    </article>
+    <article class="day card">
+      <div class="day-tag"><b>D7</b><span>1/26 화<br>귀국</span></div>
+      <div><h3>아침에 인천 도착</h3>
+        <ul class="slots">
+          <li><span class="t">07:10</span><span>인천 도착 (한국이 발리보다 1시간 빨라요)</span></li>
+        </ul></div>
+    </article>
+  </div>
+  <div class="callout"><b>하루 더 줄이려면</b> D4(우붓) 하루를 빼면 돼요. 래프팅이 꼭 하고 싶다면, 래프팅만 D5 오전 서핑 자리에 넣을 수도 있어요.</div>
+</section>
+
+<!-- 2. Flights & Stay -->
+<section class="chapter" id="stay">
+  <div class="ch-head">
+    <span class="ch-no">Part 2</span>
+    <h2>비행기랑 숙소</h2>
+    <p>2026년 10월 20일에 구글 항공권(1/20 출발, 1/25 밤 귀국)과 에어비앤비(1/21~1/25, 4박)에서 실제로 검색한 가격이에요. 가격은 계속 바뀌니까 예약할 때 다시 확인하세요.</p>
+  </div>
+
+  <h3 class="sub-h">항공권 <span class="tag">10/20 검색가</span></h3>
+  <div class="flights">
+    <article class="flight card">
+      <span class="badge" style="background:var(--mint)">최저가 직항</span>
+      <h3>제주항공</h3>
+      <div class="leg"><span>15:10<small>인천 · 1/20(수)</small></span><span class="line"></span><span>21:50<small>덴파사르</small></span></div>
+      <div class="leg"><span>23:05<small>덴파사르 · 1/25(월)</small></span><span class="line"></span><span>07:10<small>인천 · 1/26(화)</small></span></div>
+      <div class="price num">72.6<small>만원 · 1인 왕복</small></div>
+      <p class="meta">저비용 항공사라서 위탁 수하물이 요금에 포함되는지 꼭 확인하세요. 출발·도착 시간은 같은 노선 다른 날짜 검색 기준이라, 예약할 때 다시 확인하세요.</p>
+    </article>
+    <article class="flight card">
+      <span class="badge" style="background:var(--aqua)">편한 직항</span>
+      <h3>대한항공</h3>
+      <div class="leg"><span>16:20<small>인천 · 1/20(수)</small></span><span class="line"></span><span>22:25<small>덴파사르</small></span></div>
+      <div class="leg"><span>23:50<small>덴파사르 · 1/25(월)</small></span><span class="line"></span><span>07:45<small>인천 · 1/26(화)</small></span></div>
+      <div class="price num">92.8<small>만원 · 1인 왕복</small></div>
+      <p class="meta">17:50 출발편도 같은 가격이에요. 가루다항공, 아시아나항공과 공동운항해요. 대한항공은 1월 내내 같은 가격이었어요.</p>
+    </article>
+  </div>
+  <p class="callout">날짜별 제주항공 직항 왕복 가격(출발 5일 뒤 밤 귀국, 1인): 1/6 출발 80.5만 · 1/13 출발 76.6만 · 1/18 출발 80.1만 · <b>1/20 출발 72.6만</b> · 1/27 출발 87.1만. 1/20 출발이 가장 싸서 처음 계획보다 1인 약 8만원, 4명이면 약 32만원 아낄 수 있어요.</p>
+
+  <h3 class="sub-h next">숙소 <span class="tag">10/20 검색가</span></h3>
+  <div class="stays">
+    <article class="stay card pick">
+      <span class="badge">가성비</span>
+      <h3>실리 게스트하우스</h3>
+      <p class="meta">스탠다드 트윈룸 · 평점 4.92 (후기 52개)</p>
+      <dl>
+        <dt>침대</dt><dd>싱글 2개라서 친구끼리 쓰기 편해요</dd>
+        <dt>시설</dt><dd>수영장, 공용 주방, 세탁기·건조기</dd>
+        <dt>4박 요금</dt><dd class="num">13.8만원 (방 1개, 2명)</dd>
+        <dt>방 2개</dt><dd class="num">27.5만원 → 1인 약 6.9만원</dd>
+        <dt>체크인</dt><dd>오후 1시~10시 (투어 끝나고 바로 들어갈 수 있어요)</dd>
+        <dt>취소</dt><dd>1/16까지 무료 취소</dd>
+        <dt>확인할 것</dt><dd>방 1개 가격이라 같은 호스트의 다른 방도 비었는지 확인</dd>
+      </dl>
+      <a class="go" href="https://www.airbnb.co.kr/rooms/44522538?check_in=2027-01-21&amp;check_out=2027-01-25&amp;adults=2" target="_blank" rel="noopener">에어비앤비에서 보기 ↗</a>
+    </article>
+    <article class="stay card">
+      <span class="badge">분위기</span>
+      <h3>트로피컬 비치 호스텔 캉구</h3>
+      <p class="meta">아늑한 더블룸 · 평점 4.86 (후기 7개)</p>
+      <dl>
+        <dt>침대</dt><dd>더블 1개 (2명이 한 침대)</dd>
+        <dt>시설</dt><dd>공용 수영장, 욕조, 넷플릭스 TV</dd>
+        <dt>4박 요금</dt><dd class="num">31.3만원 (방 1개, 할인 적용)</dd>
+        <dt>방 2개</dt><dd class="num">62.7만원 → 1인 약 15.7만원</dd>
+        <dt>취소</dt><dd>1/7까지 무료 취소</dd>
+      </dl>
+      <a class="go" href="https://www.airbnb.co.kr/rooms/800335123861742011?check_in=2027-01-21&amp;check_out=2027-01-25&amp;adults=2" target="_blank" rel="noopener">에어비앤비에서 보기 ↗</a>
+    </article>
+    <article class="stay card">
+      <span class="badge">대안</span>
+      <h3>짱구 2베드룸 풀빌라</h3>
+      <p class="meta">4명이 빌라 한 채를 통째로 쓰기</p>
+      <dl>
+        <dt>장점</dt><dd>우리만 쓰는 수영장과 거실이 있어요</dd>
+        <dt>4박 요금</dt><dd class="num">약 63~89만원 (빌라 1채)</dd>
+        <dt>1인</dt><dd class="num">약 15.8~22.3만원</dd>
+      </dl>
+      <ul class="villas">
+        <li><a href="https://www.airbnb.co.kr/rooms/1741918153782163365?check_in=2027-01-21&amp;check_out=2027-01-25&amp;adults=4" target="_blank" rel="noopener">중앙 짱구 신규 2베드룸 빌라</a> · ★4.95 (21) · <span class="num">63.0만</span></li>
+        <li><a href="https://www.airbnb.co.kr/rooms/1502634138074903026?check_in=2027-01-21&amp;check_out=2027-01-25&amp;adults=4" target="_blank" rel="noopener">캉구 해변 근처 새 2BR 풀빌라</a> · ★5.0 (38) · <span class="num">83.8만</span></li>
+        <li><a href="https://www.airbnb.co.kr/rooms/1374559505732953045?check_in=2027-01-21&amp;check_out=2027-01-25&amp;adults=4" target="_blank" rel="noopener">고요한 2BR 빌라, 전용 수영장</a> · ★5.0 (96) · <span class="num">89.3만</span></li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<!-- 3. Guide -->
+<section class="chapter" id="guide">
+  <div class="ch-head">
+    <span class="ch-no">Part 3</span>
+    <h2>가서 뭐 하지?</h2>
+    <p>일정에 넣은 곳을 지역별로 정리했어요. 이동 시간은 짱구 숙소에서 차로 가는 시간 기준이고, 비용은 1인 기준이에요. 카드마다 구글 지도, 네이버 사진, 네이버 블로그 후기로 바로 갈 수 있어요.</p>
+  </div>
+
+  <h3 class="guide-group">짱구 · 숙소 근처</h3>
+  <div class="guide g-canggu">
+    <article class="spot card" id="surf">
+      <div class="art" aria-hidden="true"><svg viewBox="0 0 320 130" preserveAspectRatio="xMidYMid slice"><rect class="s-sky" width="320" height="130"/><circle class="s-sun o" cx="262" cy="38" r="20"/><path class="s-aqua o" d="M-5 80 Q40 58 80 80 T160 80 T240 80 T325 80 V135 H-5Z"/><path class="s-line" d="M0 106 Q40 92 80 106 T160 106 T240 106 T320 106"/><g transform="rotate(-16 120 66)"><ellipse class="s-pink o" cx="120" cy="66" rx="48" ry="9"/><path class="s-line" d="M80 66 H160"/></g></svg></div>
+      <div class="links"><a href="https://www.google.com/maps/search/?api=1&amp;query=Batu+Bolong+Beach+Canggu" target="_blank" rel="noopener">구글 지도 ↗</a><a href="https://search.naver.com/search.naver?where=image&amp;query=발리+바투볼롱+서핑" target="_blank" rel="noopener">사진 ↗</a><a href="https://search.naver.com/search.naver?where=blog&amp;query=발리+짱구+서핑+강습+후기" target="_blank" rel="noopener">블로그 후기 ↗</a></div>
+      <span class="kind">액티비티 · 메인</span>
+      <h3>바투볼롱 서핑 강습<em>Batu Bolong</em></h3>
+      <div class="facts"><span>차로 5~15분</span><span>1회 2시간</span><span class="num">약 3.5만원</span><span>2회 예정</span></div>
+      <p>짱구에서 초보자가 가장 많이 배우는 해변이에요. 바닥이 모래라서 넘어져도 덜 위험하고, 파도가 부드럽게 길게 들어와요. 해변을 따라 서핑 스쿨이 줄지어 있고, 해변 바로 앞 바위 위에는 작은 사원이 있어요.</p>
+      <ul>
+        <li><b>사진·영상</b> 강습비에는 포함되지 않아요. 해변에서 한 사람만 따라다니며 찍는 카메라맨이 있고, 물에서 나오면 사진을 보여 줘요. 마음에 들 때만 사면 되고(약 1.5만원), 에어드롭으로 받아요.</li>
+        <li><b>시간</b> 바람이 약한 아침 7~9시가 가장 좋아요.</li>
+        <li><b>준비물</b> 래시가드, 워터프루프 선크림. 보드와 리쉬는 강습비에 포함돼요.</li>
+        <li><b>4명이면</b> 그룹 강습 할인이 되는지 물어보세요.</li>
+      </ul>
+    </article>
+    <article class="spot card" id="beachclub">
+      <div class="art" aria-hidden="true"><svg viewBox="0 0 320 130" preserveAspectRatio="xMidYMid slice"><rect class="s-soft-pink" width="320" height="130"/><circle class="s-orange o" cx="200" cy="88" r="34"/><rect class="s-aqua o" x="-5" y="86" width="330" height="50"/><path class="s-line" d="M44 135 Q50 92 68 54"/><path class="s-mint o" d="M68 54 Q40 36 16 50 Q42 44 68 54Z M68 54 Q90 30 116 40 Q90 42 68 54Z M68 54 Q60 24 80 10 Q74 34 68 54Z"/><path class="s-line" d="M240 112 H290 M248 112 L242 122 M282 112 L288 122"/></svg></div>
+      <div class="links"><a href="https://www.google.com/maps/search/?api=1&amp;query=Finns+Beach+Club+Canggu" target="_blank" rel="noopener">구글 지도 ↗</a><a href="https://search.naver.com/search.naver?where=image&amp;query=발리+짱구+비치클럽+선셋" target="_blank" rel="noopener">사진 ↗</a><a href="https://search.naver.com/search.naver?where=blog&amp;query=발리+핀스+비치클럽+라브리사+후기" target="_blank" rel="noopener">블로그 후기 ↗</a></div>
+      <span class="kind">휴식 · 선셋</span>
+      <h3>비치클럽<em>Finns · La Brisa</em></h3>
+      <div class="facts"><span>차로 5~15분</span><span>2~4시간</span><span>자리에 따라 최소 주문 금액 있음</span></div>
+      <p>짱구에서 노을을 보는 대표적인 방법이에요. 핀스는 수영장과 디제잉이 있는 대형 클럽이고, 라 브리사는 배 나무로 꾸민 해변 바라서 분위기가 차분해요.</p>
+      <ul>
+        <li><b>4명이면</b> 데이베드나 소파 자리를 잡고 최소 주문 금액을 나눠 내면 좋아요.</li>
+        <li><b>예약</b> 선셋 시간대 자리는 미리 예약하세요.</li>
+        <li><b>일몰</b> 1월 발리는 오후 6시 40분쯤 해가 져요.</li>
+      </ul>
+    </article>
+    <article class="spot card" id="cafe">
+      <div class="art" aria-hidden="true"><svg viewBox="0 0 320 130" preserveAspectRatio="xMidYMid slice"><rect class="s-soft-sun" width="320" height="130"/><ellipse class="s-pink o" cx="160" cy="112" rx="64" ry="9"/><path class="s-line" d="M200 62 Q224 62 224 76 Q224 90 200 90"/><path class="s-white o" d="M120 50 H200 V88 Q200 108 180 108 H140 Q120 108 120 88Z"/><path class="s-line" d="M145 40 Q138 30 146 20 M165 40 Q158 30 166 20 M185 40 Q178 30 186 20"/><circle class="s-mint o" cx="62" cy="80" r="22"/><circle class="s-sun o" cx="54" cy="74" r="6"/><circle class="s-pink o" cx="70" cy="84" r="6"/></svg></div>
+      <div class="links"><a href="https://www.google.com/maps/search/?api=1&amp;query=brunch+cafe+Canggu" target="_blank" rel="noopener">구글 지도 ↗</a><a href="https://search.naver.com/search.naver?where=image&amp;query=발리+짱구+카페+브런치" target="_blank" rel="noopener">사진 ↗</a><a href="https://search.naver.com/search.naver?where=blog&amp;query=발리+짱구+카페+추천" target="_blank" rel="noopener">블로그 후기 ↗</a></div>
+      <span class="kind">먹거리</span>
+      <h3>짱구 카페와 브런치<em>Canggu cafés</em></h3>
+      <div class="facts"><span>숙소 근처</span><span class="num">1인 1~2만원</span></div>
+      <p>짱구는 서퍼와 디지털 노마드가 많아서 스무디볼, 에그 베네딕트, 스페셜티 커피를 파는 카페가 아주 많아요. 서핑 끝나고 바로 브런치 먹으러 가기 좋아요.</p>
+      <ul>
+        <li><b>현지 식당</b> 나시 짬뿌르나 미 고렝 같은 현지 음식을 파는 와룽은 1인 5천원 정도면 먹을 수 있어요.</li>
+        <li><b>물</b> 수돗물은 마시지 말고 생수만 드세요.</li>
+      </ul>
+    </article>
+    <article class="spot card" id="massage">
+      <div class="art" aria-hidden="true"><svg viewBox="0 0 320 130" preserveAspectRatio="xMidYMid slice"><rect class="s-soft-mint" width="320" height="130"/><path class="s-mint o" d="M90 100 Q110 70 140 76 Q120 96 90 100Z M230 100 Q210 70 180 76 Q200 96 230 100Z"/><g class="s-white o"><ellipse cx="160" cy="40" rx="13" ry="25"/><ellipse cx="160" cy="40" rx="13" ry="25" transform="rotate(72 160 65)"/><ellipse cx="160" cy="40" rx="13" ry="25" transform="rotate(144 160 65)"/><ellipse cx="160" cy="40" rx="13" ry="25" transform="rotate(216 160 65)"/><ellipse cx="160" cy="40" rx="13" ry="25" transform="rotate(288 160 65)"/></g><circle class="s-sun o" cx="160" cy="65" r="10"/></svg></div>
+      <div class="links"><a href="https://www.google.com/maps/search/?api=1&amp;query=Balinese+massage+spa+Canggu" target="_blank" rel="noopener">구글 지도 ↗</a><a href="https://search.naver.com/search.naver?where=blog&amp;query=발리+짱구+마사지+추천" target="_blank" rel="noopener">블로그 후기 ↗</a></div>
+      <span class="kind">휴식</span>
+      <h3>발리니즈 마사지<em>Balinese massage</em></h3>
+      <div class="facts"><span>숙소 근처</span><span>60~90분</span><span class="num">약 1.5~2.5만원</span></div>
+      <p>오일을 쓰면서 길게 문지르고 지압을 섞는 발리식 전신 마사지예요. 트레킹을 한 날 저녁에 받으면 좋아요.</p>
+      <ul>
+        <li><b>예약</b> 4명이 같은 시간에 받으려면 낮에 미리 예약해 두세요.</li>
+      </ul>
+    </article>
+  </div>
+
+  <h3 class="guide-group">킨타마니 · 우붓</h3>
+  <div class="guide g-ubud">
+    <article class="spot card" id="batur">
+      <div class="art" aria-hidden="true"><svg viewBox="0 0 320 130" preserveAspectRatio="xMidYMid slice"><rect class="s-soft-sun" width="320" height="130"/><circle class="s-orange o" cx="160" cy="56" r="30"/><path class="s-mint o" d="M30 135 L128 50 H192 L290 135Z"/><path class="s-line" d="M152 46 Q142 32 154 22 Q166 12 158 2"/><ellipse class="s-aqua o" cx="300" cy="126" rx="70" ry="14"/><rect class="s-pink o" x="78" y="84" width="40" height="16" rx="3" transform="rotate(-28 98 92)"/><circle class="s-ink" cx="90" cy="106" r="5"/><circle class="s-ink" cx="110" cy="96" r="5"/></svg></div>
+      <div class="links"><a href="https://www.google.com/maps/search/?api=1&amp;query=Mount+Batur+Bali" target="_blank" rel="noopener">구글 지도 ↗</a><a href="https://search.naver.com/search.naver?where=image&amp;query=바투르+지프+투어+일출" target="_blank" rel="noopener">사진 ↗</a><a href="https://search.naver.com/search.naver?where=blog&amp;query=발리+바투르산+지프투어+후기" target="_blank" rel="noopener">블로그 후기 ↗</a></div>
+      <span class="kind">액티비티 · 새벽</span>
+      <h3>바투르산 일출 지프 투어<em>Mount Batur 4WD Jeep</em></h3>
+      <div class="facts"><span>공항·짱구에서 차로 약 1시간 30분~2시간</span><span>지프 약 40분 + 짧게 걷기</span><span class="num">약 7~8만원 (픽업 포함)</span></div>
+      <p>해발 1,717m 활화산 바투르산을 4륜구동 지프로 올라가서 일출을 보는 투어예요. 2시간 걸어 오르는 트레킹과 달리, 지프에서 내려 조금만 걸으면 칼데라 호수와 아궁산 너머로 해가 뜨는 걸 볼 수 있어요. 해가 뜬 뒤에는 옛날 분화 때 흘러내린 용암이 굳은 검은 용암 지대를 지프로 달려요.</p>
+      <ul>
+        <li><b>포함</b> 픽업과 드롭, 가이드, 입장료, 온천 1시간, 아침 식사, 커피농장이 포함된 상품이 많아요. 상품마다 다르니 예약할 때 확인하세요.</li>
+        <li><b>우리 일정</b> 보통 짱구 픽업이 새벽 3시쯤이에요. 공항 픽업은 따로 요청하고, 캐리어 4개를 실을 수 있는지 확인하세요.</li>
+        <li><b>복장</b> 새벽 산 위는 쌀쌀해요. 바람막이나 얇은 겉옷을 챙기세요. 온천용 수영복도요.</li>
+        <li><b>우기</b> 구름 때문에 해가 안 보일 수도 있어요.</li>
+      </ul>
+    </article>
+    <article class="spot card" id="rafting">
+      <div class="art" aria-hidden="true"><svg viewBox="0 0 320 130" preserveAspectRatio="xMidYMid slice"><rect class="s-soft-mint" width="320" height="130"/><path class="s-mint o" d="M-5 -5 Q50 40 -5 70Z M325 -5 Q270 36 325 62Z"/><path class="s-aqua o" d="M-5 96 Q80 66 160 90 T325 78 V135 H-5Z"/><path class="s-line" d="M128 56 L116 98 M192 56 L206 98"/><circle class="s-sun o" cx="140" cy="68" r="7"/><circle class="s-pink o" cx="160" cy="66" r="7"/><circle class="s-sun o" cx="180" cy="68" r="7"/><path class="s-orange o" d="M108 84 Q160 106 212 84 Q208 72 160 74 Q112 72 108 84Z"/></svg></div>
+      <div class="links"><a href="https://www.google.com/maps/search/?api=1&amp;query=Ayung+River+Rafting+Ubud" target="_blank" rel="noopener">구글 지도 ↗</a><a href="https://search.naver.com/search.naver?where=image&amp;query=발리+아융강+래프팅" target="_blank" rel="noopener">사진 ↗</a><a href="https://search.naver.com/search.naver?where=blog&amp;query=발리+아융강+래프팅+후기" target="_blank" rel="noopener">블로그 후기 ↗</a></div>
+      <span class="kind">액티비티</span>
+      <h3>아융강 래프팅<em>Ayung River</em></h3>
+      <div class="facts"><span>차로 약 1시간 30분</span><span>보트 타는 시간 약 2시간</span><span class="num">약 4~5만원</span></div>
+      <p>우붓 정글 협곡 사이를 고무보트로 내려가요. 급류 난이도는 2~3등급이라 처음 해 보는 사람도 할 수 있고, 중간에 폭포와 바위 조각을 지나가요. 비가 많이 오는 1월에는 물이 불어서 더 신나요.</p>
+      <ul>
+        <li><b>포함</b> 픽업, 장비, 샤워, 점심 뷔페가 포함된 상품이 대부분이에요.</li>
+        <li><b>준비물</b> 젖어도 되는 옷, 아쿠아슈즈나 스포츠 샌들, 갈아입을 옷. 휴대폰은 방수팩에 넣으세요.</li>
+        <li><b>주의</b> 끝나고 강 바닥에서 계단을 300개 정도 올라가야 해요.</li>
+      </ul>
+    </article>
+    <article class="spot card" id="tegallalang">
+      <div class="art" aria-hidden="true"><svg viewBox="0 0 320 130" preserveAspectRatio="xMidYMid slice"><rect class="s-sky" width="320" height="130"/><path class="s-line" d="M84 -2 L96 44 M112 -2 L104 44 M90 44 H110"/><path class="s-line" d="M262 56 Q266 30 258 8"/><path class="s-mint o" d="M258 8 Q236 0 222 12 Q240 8 258 8Z M258 8 Q280 -2 296 10 Q278 8 258 8Z"/><path class="s-mint o" d="M-5 54 Q160 32 325 54 V135 H-5Z"/><path class="s-soft-mint o" d="M-5 76 Q160 54 325 76 V135 H-5Z"/><path class="s-mint o" d="M-5 98 Q160 76 325 98 V135 H-5Z"/><path class="s-soft-mint o" d="M-5 120 Q160 98 325 120 V135 H-5Z"/></svg></div>
+      <div class="links"><a href="https://www.google.com/maps/search/?api=1&amp;query=Tegallalang+Rice+Terrace" target="_blank" rel="noopener">구글 지도 ↗</a><a href="https://search.naver.com/search.naver?where=image&amp;query=뜨갈랄랑+계단식+논" target="_blank" rel="noopener">사진 ↗</a><a href="https://search.naver.com/search.naver?where=blog&amp;query=뜨갈랄랑+정글스윙+후기" target="_blank" rel="noopener">블로그 후기 ↗</a></div>
+      <span class="kind">명소</span>
+      <h3>뜨갈랄랑 계단식 논<em>Tegallalang</em></h3>
+      <div class="facts"><span>우붓 북쪽 20분</span><span>1~2시간</span><span>입장료 + 정글 스윙은 따로</span></div>
+      <p>야자수 사이로 초록색 논이 계단처럼 내려가는 곳이에요. 발리 전통 물 관리 방식인 수박(Subak)으로 물을 대요. 1월에는 벼가 자라는 시기라 초록빛이 진해요.</p>
+      <ul>
+        <li><b>정글 스윙</b> 논 위로 그네를 타고 사진을 찍는 곳이에요. 업체마다 가격이 다르니 들어가기 전에 확인하세요.</li>
+        <li><b>통행료</b> 논 사이 길을 지날 때 농부들이 작은 기부금을 받기도 해요. 잔돈을 챙겨 가세요.</li>
+      </ul>
+    </article>
+    <article class="spot card" id="monkey">
+      <div class="art" aria-hidden="true"><svg viewBox="0 0 320 130" preserveAspectRatio="xMidYMid slice"><rect class="s-soft-mint" width="320" height="130"/><path class="s-mint o" d="M-5 -5 Q60 30 30 80 Q10 40 -5 40Z M325 -5 Q260 30 290 80 Q310 40 325 40Z"/><circle class="s-orange o" cx="126" cy="62" r="14"/><circle class="s-orange o" cx="194" cy="62" r="14"/><circle class="s-orange o" cx="160" cy="66" r="36"/><ellipse class="s-soft-sun o" cx="160" cy="76" rx="24" ry="20"/><circle class="s-ink" cx="150" cy="64" r="4"/><circle class="s-ink" cx="170" cy="64" r="4"/><path class="s-line" d="M152 84 Q160 90 168 84"/></svg></div>
+      <div class="links"><a href="https://www.google.com/maps/search/?api=1&amp;query=Sacred+Monkey+Forest+Sanctuary+Ubud" target="_blank" rel="noopener">구글 지도 ↗</a><a href="https://search.naver.com/search.naver?where=image&amp;query=우붓+몽키포레스트" target="_blank" rel="noopener">사진 ↗</a><a href="https://search.naver.com/search.naver?where=blog&amp;query=우붓+몽키포레스트+후기" target="_blank" rel="noopener">블로그 후기 ↗</a></div>
+      <span class="kind">명소</span>
+      <h3>몽키 포레스트<em>Sacred Monkey Forest</em></h3>
+      <div class="facts"><span>우붓 시내</span><span>약 1시간</span><span class="num">입장료 약 1만원</span></div>
+      <p>오래된 반얀나무와 이끼 낀 사원 사이에 긴꼬리원숭이 수백 마리가 사는 숲이에요. 우붓 시내 남쪽에 있어서 걸어서 시내 구경까지 이어서 하기 좋아요.</p>
+      <ul>
+        <li><b>주의</b> 선글라스, 모자, 비닐봉지, 음식은 원숭이가 채 가요. 가방은 앞으로 메세요.</li>
+        <li><b>규칙</b> 원숭이와 눈을 오래 마주치지 말고, 먹이를 주지 마세요.</li>
+      </ul>
+    </article>
+  </div>
+
+  <h3 class="guide-group">울루와뚜 · 짐바란</h3>
+  <div class="guide g-south">
+    <article class="spot card" id="uluwatu">
+      <div class="art" aria-hidden="true"><svg viewBox="0 0 320 130" preserveAspectRatio="xMidYMid slice"><rect class="s-soft-pink" width="320" height="130"/><circle class="s-sun o" cx="70" cy="72" r="22"/><rect class="s-aqua o" x="-5" y="90" width="330" height="50"/><path class="s-orange o" d="M178 135 L190 70 L325 62 V135Z"/><g class="s-ink"><rect x="246" y="40" width="20" height="26"/><path d="M234 46 H278 L268 36 H244Z M238 34 H274 L264 25 H248Z M243 23 H269 L262 14 H250Z"/></g></svg></div>
+      <div class="links"><a href="https://www.google.com/maps/search/?api=1&amp;query=Uluwatu+Temple" target="_blank" rel="noopener">구글 지도 ↗</a><a href="https://search.naver.com/search.naver?where=image&amp;query=울루와뚜+사원+케착댄스" target="_blank" rel="noopener">사진 ↗</a><a href="https://search.naver.com/search.naver?where=blog&amp;query=울루와뚜+케착댄스+후기" target="_blank" rel="noopener">블로그 후기 ↗</a></div>
+      <span class="kind">명소 · 공연</span>
+      <h3>울루와뚜 사원과 케착댄스<em>Pura Luhur Uluwatu</em></h3>
+      <div class="facts"><span>차로 1시간~1시간 30분</span><span>약 3시간</span><span class="num">입장료와 공연 합쳐 약 2만원</span></div>
+      <p>바다 위 약 70m 높이 절벽 끝에 있는 사원이에요. 노을이 질 때 절벽 옆 원형 무대에서 케착댄스 공연을 해요. 남자 수십 명이 둘러앉아 "깍깍" 하는 소리를 내고, 그 소리에 맞춰 라마야나 이야기를 보여 줘요. 마지막에는 불을 쓰는 장면이 나와요.</p>
+      <ul>
+        <li><b>복장</b> 사원에 들어갈 때 허리에 사롱을 둘러야 하는데, 입구에서 빌려줘요.</li>
+        <li><b>원숭이</b> 몽키 포레스트보다 더 대담해요. 안경과 휴대폰을 꼭 잡고 다니세요.</li>
+        <li><b>공연 표</b> 공연 시작 한 시간 전에는 도착해서 표를 사세요. 노을이 정면으로 보이는 자리가 좋아요.</li>
+      </ul>
+    </article>
+    <article class="spot card" id="jimbaran">
+      <div class="art" aria-hidden="true"><svg viewBox="0 0 320 130" preserveAspectRatio="xMidYMid slice"><rect class="s-soft-sun" width="320" height="130"/><path class="s-pink o" d="M200 62 L234 40 L234 84Z"/><path class="s-pink o" d="M98 62 Q150 26 202 62 Q150 98 98 62Z"/><circle class="s-ink" cx="122" cy="57" r="4"/><path class="s-line" d="M150 44 Q160 62 150 80"/><path class="s-line" d="M84 108 H236 M84 118 H236"/></svg></div>
+      <div class="links"><a href="https://www.google.com/maps/search/?api=1&amp;query=Jimbaran+Bay+seafood+restaurant" target="_blank" rel="noopener">구글 지도 ↗</a><a href="https://search.naver.com/search.naver?where=image&amp;query=짐바란+씨푸드" target="_blank" rel="noopener">사진 ↗</a><a href="https://search.naver.com/search.naver?where=blog&amp;query=발리+짐바란+씨푸드+후기" target="_blank" rel="noopener">블로그 후기 ↗</a></div>
+      <span class="kind">먹거리</span>
+      <h3>짐바란 해산물 저녁<em>Jimbaran Bay</em></h3>
+      <div class="facts"><span>울루와뚜에서 20~30분</span><span class="num">1인 약 3~5만원</span></div>
+      <p>모래사장에 테이블을 깔고 숯불에 구운 생선, 새우, 랍스터를 먹는 해변 식당 거리예요. 수조에서 해산물을 고르면 무게를 달아서 가격을 매겨요.</p>
+      <ul>
+        <li><b>주의</b> 주문하기 전에 무게와 kg당 가격을 꼭 확인하세요. 세트 메뉴를 시키면 가격이 확실해요.</li>
+      </ul>
+    </article>
+  </div>
+
+  <h3 class="guide-group">아메드 · 마지막 날</h3>
+  <div class="guide g-east">
+    <article class="spot card" id="freedive">
+      <div class="art" aria-hidden="true"><svg viewBox="0 0 320 130" preserveAspectRatio="xMidYMid slice"><rect class="s-aqua" width="320" height="130"/><path class="s-sky o" d="M-5 -5 H325 V18 Q280 28 240 18 T160 18 T80 18 T-5 18Z"/><g transform="rotate(150 160 70)"><path class="s-ink o" d="M152 98 L142 128 L158 104Z M168 98 L178 128 L162 104Z"/><ellipse class="s-pink o" cx="160" cy="70" rx="12" ry="30"/><circle class="s-sun o" cx="160" cy="34" r="10"/></g><circle class="s-white o" cx="124" cy="40" r="5"/><circle class="s-white o" cx="116" cy="28" r="3.5"/><path class="s-line" d="M0 116 Q30 104 50 116 M270 120 Q290 104 320 112"/></svg></div>
+      <div class="links"><a href="https://www.google.com/maps/search/?api=1&amp;query=Jemeluk+Bay+Amed" target="_blank" rel="noopener">구글 지도 ↗</a><a href="https://search.naver.com/search.naver?where=image&amp;query=발리+아메드+프리다이빙" target="_blank" rel="noopener">사진 ↗</a><a href="https://search.naver.com/search.naver?where=blog&amp;query=발리+아메드+프리다이빙+체험+후기" target="_blank" rel="noopener">블로그 후기 ↗</a></div>
+      <span class="kind">액티비티 · 마지막 날</span>
+      <h3>프리다이빙 체험<em>Amed · Jemeluk Bay</em></h3>
+      <div class="facts"><span>짱구·공항에서 차로 2시간 30분~3시간</span><span>하루 (이론, 수영장, 바다)</span><span class="num">약 14만원 (100달러 안팎)</span></div>
+      <p>숨을 참고 잠수하는 법을 배우는 하루짜리 체험 코스예요. 발리 동쪽 끝에 있는 아메드는 파도가 잔잔한 만이라서 발리에서 프리다이빙 스쿨이 가장 많이 모여 있어요. 호흡법과 귀 압력 맞추는 법(이퀄라이징)을 배우고, 수영장에서 연습한 다음 바다에 들어가요.</p>
+      <ul>
+        <li><b>코스 이름</b> 스쿨마다 Try Freediving, AIDA 1, Discover Freediving 같은 이름으로 불러요. 마스크, 핀, 웻슈트, 웨이트 같은 장비는 보통 포함돼요.</li>
+        <li><b>당일 밤 비행기</b> 그날 밤 비행기를 타니까 스쿨에 미리 말해 두고, 샤워 시설이 있는지도 확인하세요.</li>
+        <li><b>자격증</b> 2~3일짜리 레벨 1 코스는 260만~500만 루피아(약 23만~43만원)라서, 이번 일정에는 체험만 추천해요.</li>
+        <li><b>1월 바다</b> 비 때문에 시야가 조금 흐려질 수 있지만, 물이 따뜻해서 들어가기 좋아요. 감기 기운이 있으면 귀 압력을 맞추기 어려우니 무리하지 마세요.</li>
+      </ul>
+    </article>
+    <article class="spot card" id="snorkel">
+      <div class="art" aria-hidden="true"><svg viewBox="0 0 320 130" preserveAspectRatio="xMidYMid slice"><rect class="s-sky" width="320" height="130"/><rect class="s-aqua o" x="-5" y="30" width="330" height="110"/><path class="s-orange o" d="M90 118 L110 92 H220 L236 118Z"/><rect class="s-orange o" x="150" y="74" width="30" height="18"/><path class="s-mint o" d="M100 118 Q104 100 112 96 Q110 108 116 118Z M220 118 Q224 104 232 100 Q228 110 232 118Z"/><path class="s-sun o" d="M240 60 Q256 50 272 60 Q256 70 240 60Z M272 60 L282 52 V68Z"/><path class="s-pink o" d="M60 70 Q72 62 84 70 Q72 78 60 70Z M84 70 L92 64 V76Z"/><ellipse class="s-white o" cx="160" cy="30" rx="18" ry="5"/></svg></div>
+      <div class="links"><a href="https://www.google.com/maps/search/?api=1&amp;query=Japanese+Shipwreck+Amed" target="_blank" rel="noopener">구글 지도 ↗</a><a href="https://search.naver.com/search.naver?where=image&amp;query=아메드+일본+난파선+스노클링" target="_blank" rel="noopener">사진 ↗</a><a href="https://search.naver.com/search.naver?where=blog&amp;query=발리+아메드+스노클링+후기" target="_blank" rel="noopener">블로그 후기 ↗</a></div>
+      <span class="kind">액티비티 · 마지막 날</span>
+      <h3>난파선 스노클링<em>Japanese Shipwreck, Amed</em></h3>
+      <div class="facts"><span>아메드 바닷가</span><span>1~2시간</span><span>장비 대여 1만원 안팎</span></div>
+      <p>아메드 해변 바로 앞 얕은 바다에 '일본 난파선'이라고 불리는 작은 배가 가라앉아 있어요. 해변에서 헤엄쳐 들어가면 산호로 덮인 배와 열대어가 보여서 스노클링만으로도 충분히 재밌어요.</p>
+      <ul>
+        <li><b>프리다이빙을 안 한다면</b> 그날은 스노클링만 해도 돼요. 근처 뚤람벤에 있는 USAT 리버티 난파선도 얕은 쪽은 스노클링으로 볼 수 있어요.</li>
+        <li><b>신발</b> 바닥이 돌과 산호라서 아쿠아슈즈가 꼭 필요해요.</li>
+        <li><b>산호 보호</b> 산호는 만지거나 밟지 말고, 산호에 해가 없는 선크림을 쓰세요.</li>
+      </ul>
+    </article>
+  </div>
+
+  <h3 class="guide-group">대안</h3>
+  <div class="guide g-opt">
+    <article class="spot card" id="penida">
+      <div class="art" aria-hidden="true"><svg viewBox="0 0 320 130" preserveAspectRatio="xMidYMid slice"><rect class="s-sky" width="320" height="130"/><circle class="s-sun o" cx="40" cy="30" r="16"/><path class="s-mint o" d="M90 64 L104 26 Q150 14 196 24 L214 64Z"/><rect class="s-aqua o" x="-5" y="60" width="330" height="80"/><path class="s-ink" d="M170 100 Q200 80 230 100 Q212 104 200 118 Q188 104 170 100Z"/><path class="s-line" d="M200 112 Q206 122 214 126"/><ellipse class="s-white o" cx="110" cy="60" rx="16" ry="5"/></svg></div>
+      <div class="links"><a href="https://www.google.com/maps/search/?api=1&amp;query=Manta+Point+Nusa+Penida" target="_blank" rel="noopener">구글 지도 ↗</a><a href="https://search.naver.com/search.naver?where=image&amp;query=누사페니다+만타+스노클링" target="_blank" rel="noopener">사진 ↗</a><a href="https://search.naver.com/search.naver?where=blog&amp;query=누사페니다+스노클링+투어+후기" target="_blank" rel="noopener">블로그 후기 ↗</a></div>
+      <span class="kind">아메드 대신</span>
+      <h3>누사페니다 만타 스노클링<em>Manta Point, Nusa Penida</em></h3>
+      <div class="facts"><span>사누르에서 쾌속선 약 40분</span><span>07:30~16:30</span><span class="num">약 7.5만원 (85만 루피아)</span></div>
+      <p>아메드까지 가는 길이 부담스럽다면 고를 수 있는 대안이에요. 커다란 만타가오리가 모이는 만타 포인트에서 스노클링하고, 가맛 베이와 토야파켕도 돌아요. 출발하는 사누르 항구가 공항에서 가까워서 마지막 날 동선이 편해요. 다만 프리다이빙 체험은 없어요.</p>
+      <ul>
+        <li><b>우기 주의</b> 1월에 파도가 높으면 만타 포인트 대신 크리스탈 베이로 바뀌거나 배가 아예 취소될 수 있어요.</li>
+        <li><b>따로 내는 돈</b> 웻슈트 대여와 섬 입도세(2.5만 루피아)는 포함되지 않은 경우가 많아요.</li>
+        <li><b>멀미</b> 쾌속선과 작은 배를 계속 타니까 멀미약을 꼭 챙기세요.</li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<!-- 4. Budget -->
+<section class="chapter" id="budget">
+  <div class="ch-head">
+    <span class="ch-no">Part 4</span>
+    <h2>얼마 들까?</h2>
+    <p>1인, 숙소 4박 기준이에요. 방값과 차량비는 4명으로 나눈 금액이고, 단위는 만원이에요. "검색가" 표시가 붙은 항목은 10월 20일에 실제로 검색한 가격이고, 나머지는 예상치예요.</p>
+  </div>
+  <div class="seg" role="group" aria-label="예산 버전 선택">
+    <button type="button" id="b-save" aria-pressed="true" data-v="save">아끼는 버전</button>
+    <button type="button" id="b-comfy" aria-pressed="false" data-v="comfy">여유 있는 버전</button>
+  </div>
+  <div class="budget">
+    <div class="tbl-wrap card">
+      <table>
+        <thead><tr><th>항목</th><th style="text-align:right">1인</th></tr></thead>
+        <tbody id="btable"></tbody>
+      </table>
+    </div>
+    <aside class="total card" aria-live="polite">
+      <div>
+        <div class="lbl">1인 합계</div>
+        <div class="big num" id="tot1">162<small>만원</small></div>
+      </div>
+      <div>
+        <div class="lbl">4인 총액</div>
+        <div class="num" style="font-size:22px;font-weight:600" id="tot4">약 647만원</div>
+      </div>
+      <div class="bar" id="bar" aria-hidden="true"></div>
+      <div class="legend" id="legend"></div>
+    </aside>
+  </div>
+</section>
+
+<!-- 5. Season -->
+<section class="chapter" id="season">
+  <div class="ch-head">
+    <span class="ch-no">Part 5</span>
+    <h2>비 많이 와?</h2>
+    <p>발리는 11월~3월이 우기, 4월~10월이 건기예요. 1월 우기에는 하루 종일 비가 오기보다 오후에 1~2시간 쏟아지고 그치는 날이 많아요. 그래서 이 일정은 활동을 되도록 오전에 몰아 뒀어요.</p>
+  </div>
+  <div class="months" aria-label="월별 시즌">
+    <div class="wet now">1<small>우리</small></div><div class="wet">2</div><div class="wet">3</div>
+    <div class="dry">4<small>추천</small></div><div class="dry">5<small>추천</small></div><div class="dry">6</div><div class="dry">7</div><div class="dry">8</div>
+    <div class="dry">9<small>추천</small></div><div class="dry">10<small>추천</small></div><div class="wet">11</div><div class="wet">12</div>
+  </div>
+  <div class="key"><span><s style="background:var(--aqua)"></s>우기 · 저렴함 (연말연시는 비쌈)</span><span><s style="background:var(--sun)"></s>건기 · 6~8월은 가장 붐비고 비쌈</span></div>
+  <div class="callout">1월 발리는 기온이 27~31℃ 정도이고 아주 습해요. 1월 하순은 신년 성수기가 끝난 뒤라 항공권이 조금 더 싸요. 다음에 시기를 고를 수 있다면, 날씨와 가격이 둘 다 괜찮은 <b>4~5월이나 9~10월</b>이 가장 좋아요.</div>
+</section>
+
+<!-- 6. Prep -->
+<section class="chapter" id="prep">
+  <div class="ch-head">
+    <span class="ch-no">Part 6</span>
+    <h2>출발 전 체크!</h2>
+    <p>체크한 항목은 이 브라우저에만 저장돼요. 4명이 같이 보는 체크리스트는 아니에요.</p>
+  </div>
+  <div class="prep">
+    <div class="box card">
+      <h3>입국과 서류</h3>
+      <ul class="check">
+        <li><label><input type="checkbox" id="c1"><span>여권 유효기간 6개월 이상 남았는지 확인</span></label></li>
+        <li><label><input type="checkbox" id="c2"><span>전자 도착비자(e-VOA) 온라인 신청 · 50만 루피아</span></label></li>
+        <li><label><input type="checkbox" id="c3"><span>발리 관광세 납부 · 15만 루피아</span></label></li>
+        <li><label><input type="checkbox" id="c4"><span>전자 입국 신고서 작성 (출발 3일 전부터 가능)</span></label></li>
+        <li><label><input type="checkbox" id="c5"><span>여행자보험 가입 (서핑·래프팅·프리다이빙 보장되는지 확인)</span></label></li>
+        <li><label><input type="checkbox" id="c6"><span>스쿠터를 탈 거라면 이륜차가 포함된 국제운전면허증</span></label></li>
+      </ul>
+    </div>
+    <div class="box card">
+      <h3>짐 싸기</h3>
+      <ul class="check">
+        <li><label><input type="checkbox" id="c7"><span>래시가드, 수영복, 워터프루프 선크림</span></label></li>
+        <li><label><input type="checkbox" id="c8"><span>아쿠아슈즈나 스포츠 샌들 (래프팅, 스노클링)</span></label></li>
+        <li><label><input type="checkbox" id="c9"><span>바람막이나 얇은 겉옷 (새벽 바투르는 쌀쌀해요)</span></label></li>
+        <li><label><input type="checkbox" id="c10"><span>보조배터리 (공항 대기, 지프 투어)</span></label></li>
+        <li><label><input type="checkbox" id="c11"><span>휴대폰 방수팩, 가벼운 우비</span></label></li>
+        <li><label><input type="checkbox" id="c12"><span>멀미약, 지사제, 모기 기피제</span></label></li>
+        <li><label><input type="checkbox" id="c13"><span>마지막 날 갈아입을 옷과 수건 (아메드에서 바로 공항으로 가요)</span></label></li>
+      </ul>
+    </div>
+    <div class="box card">
+      <h3>현지에서 알아 둘 것</h3>
+      <ul>
+        <li><b>시차</b> 발리가 한국보다 1시간 느려요.</li>
+        <li><b>전기</b> 220V이고 콘센트 모양이 한국과 같아서 어댑터가 필요 없어요.</li>
+        <li><b>이동</b> 가까운 곳은 그랩이나 고젝 앱으로 부르고, 하루 종일 다닐 때는 7인승 기사 차량을 대절하세요 (하루 약 6~7만원, 아메드는 거리가 멀어 더 비싸요).</li>
+        <li><b>돈</b> 작은 가게나 사원 입장료는 현금으로 내요. 환전은 공인 환전소에서만 하세요.</li>
+        <li><b>통신</b> eSIM을 미리 사 두면 도착하자마자 그랩을 부를 수 있어요.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap"><span class="bye">Sampai jumpa, Bali!</span>입국 비용과 절차는 출발 전에 인도네시아 이민국 공식 사이트에서 다시 확인하세요. 숙소 정보는 에어비앤비 기준이에요.</div>
+</footer>
+
+<script>
+(function(){
+  var COLORS=["var(--pink)","var(--mint)","var(--aqua)","var(--orange)","var(--sun)","var(--muted)"];
+  var data={
+    save:[
+      ["항공","제주항공 직항 왕복",72.6,0,1],
+      ["숙소","실리 게스트하우스 트윈룸 2개 · 4박 (27.5만 ÷ 4)",6.9,1,1],
+      ["입국 비용","도착비자 + 관광세",6,5],
+      ["교통","그랩, 스쿠터 (공항 픽업은 지프 투어에 포함)",4,5],
+      ["서핑","강습 2회 + 사진 구매",8.5,2],
+      ["투어","바투르 지프 투어, 래프팅, 우붓 기사 차량(÷4), 입장료",15.5,2],
+      ["아메드","프리다이빙 체험 + 스노클링 + 기사 차량(÷4)",17,2],
+      ["식비","하루 약 3.5만원",20,4],
+      ["마사지·비치클럽·기타","",8,3],
+      ["보험·eSIM","",3,5]
+    ],
+    comfy:[
+      ["항공","대한항공 직항 왕복",92.8,0,1],
+      ["숙소","중앙 짱구 2베드룸 빌라 · 4박 (63.0만 ÷ 4)",15.8,1,1],
+      ["입국 비용","도착비자 + 관광세",6,5],
+      ["교통","그랩, 기사 차량 (공항 픽업은 지프 투어에 포함)",5,5],
+      ["서핑","강습 2회 + 사진 구매",11,2],
+      ["투어","바투르 지프 투어, 래프팅, 우붓 기사 차량(÷4), 입장료",15.5,2],
+      ["아메드","프리다이빙 체험 + 스노클링 + 기사 차량(÷4)",17,2],
+      ["식비","하루 약 5만원",30,4],
+      ["마사지·비치클럽·기타","",15,3],
+      ["보험·eSIM","",3,5]
+    ]
+  };
+  var groups=[["항공",0],["숙소",1],["액티비티",2],["식비",4],["즐길거리",3],["기타",5]];
+  var tb=document.getElementById("btable"),bar=document.getElementById("bar"),lg=document.getElementById("legend");
+  function r1(n){return Math.round(n*10)/10;}
+  function render(v){
+    var rows=data[v],sum=0,g=[0,0,0,0,0,0],html="";
+    rows.forEach(function(r){sum+=r[2];g[r[3]]+=r[2];if(r[4]){r=[r[0]+'<span class="tag">검색가</span>',r[1],r[2]];}
+      html+="<tr><td>"+r[0]+(r[1]?"<small>"+r[1]+"</small>":"")+"</td><td class=\"amt\">"+r[2]+"</td></tr>";});
+    tb.innerHTML=html;
+    document.getElementById("tot1").innerHTML="약 "+r1(sum)+"<small>만원</small>";
+    document.getElementById("tot4").textContent="약 "+r1(sum*4)+"만원";
+    var b="",l="";
+    groups.forEach(function(x){var val=g[x[1]];if(!val)return;
+      b+="<i style=\"width:"+(val/sum*100)+"%;background:"+COLORS[x[1]]+"\"></i>";
+      l+="<div><s style=\"background:"+COLORS[x[1]]+"\"></s>"+x[0]+"<span class=\"v\">"+r1(val)+"만 · "+Math.round(val/sum*100)+"%</span></div>";});
+    bar.innerHTML=b;lg.innerHTML=l;
+    document.querySelectorAll(".seg button").forEach(function(btn){btn.setAttribute("aria-pressed",btn.dataset.v===v?"true":"false");});
+  }
+  document.querySelectorAll(".seg button").forEach(function(btn){btn.addEventListener("click",function(){render(btn.dataset.v);});});
+  render("save");
+  document.querySelectorAll(".check input").forEach(function(cb){
+    try{cb.checked=localStorage.getItem("bali-"+cb.id)==="1";}catch(e){}
+    cb.addEventListener("change",function(){try{localStorage.setItem("bali-"+cb.id,cb.checked?"1":"0");}catch(e){}});
+  });
+})();
+</script>
+
+</body></html>
